@@ -1,9 +1,11 @@
 ![ayu-vim](http://i.imgur.com/7vnF4Na.png)
 
 # Warning
+
 `ayu` is still in development and a lot of things need to be covered. Theme works only if VIM supports `termguicolors` option. This is true for [Neovim](https://neovim.io) and VIM from 7.4.1799.
 
 # Installation
+
 ```VimL
 Plug 'ayu-theme/ayu-vim' " or other package manager
 "...
@@ -14,11 +16,24 @@ let ayucolor="dark"   " for dark version of theme
 colorscheme ayu
 ```
 
+## Italics
+
+Add the following variable in your vimrc to enable italics
+
+```VimL
+let ayu_comment_italic=1 " enable italic for comments
+let ayu_string_italic=1  " enable italic for strings
+let ayu_type_italic=1    " enable italic for types
+let ayu_keyword_italic=1 " enable italic for keywords
+```
+
 # Term colors
+
 For now In `/term` you can find color schemes for iTerm. More to come.
 
 # Indent line
-To get indent line like in the screenshot install https://github.com/Yggdroot/indentLine with my version of `Roboto Mono for Powerline` from this repo and add this config.
+
+To get indent line like in the screenshot install [indentLine](https://github.com/Yggdroot/indentLine) with my version of `Roboto Mono for Powerline` from this repo and add this config.
 In this Roboto Mono version added powerline glyphs and increased line-height of the font itself.
 
 ```Viml
