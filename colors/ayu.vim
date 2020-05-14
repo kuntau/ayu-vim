@@ -1,3 +1,4 @@
+" vim: set foldmethod=marker foldlevel=0:
 " Initialisation:"{{{
 " ----------------------------------------------------------------------------
 hi clear
@@ -5,8 +6,12 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let s:style = get(g:, 'ayucolor', 'dark')
 let g:colors_name = "ayu"
+let s:style = get(g:, 'ayucolor', 'mirage') " default color to mirage
+let s:italic.comment = get(g:, 'ayu_comment_italic', 0)
+let s:italic.string = get(g:, 'ayu_string_italic', 0)
+let s:italic.type = get(g:, 'ayu_type_italic', 0)
+let s:italic.keyword = get(g:, 'ayu_keyword_italic', 0)
 "}}}
 
 " Palettes:"{{{
@@ -135,10 +140,10 @@ exe "hi! LongLineWarning" .s:fg_warning     .s:bg_none        .s:fmt_none
 
 " Generic Syntax Highlighting: (see :help group-name)"{{{
 " ----------------------------------------------------------------------------
-exe "hi! Comment"         .s:fg_comment   .s:bg_none        .s:fmt_none
+exe "hi! Comment"         .s:fg_comment   .s:bg_none        .(s:italic.comment ? s:fmt_ital : s:fmt_none)
 
 exe "hi! Constant"        .s:fg_constant  .s:bg_none        .s:fmt_none
-exe "hi! String"          .s:fg_string    .s:bg_none        .s:fmt_none
+exe "hi! String"          .s:fg_string    .s:bg_none        .(s:italic.string ? s:fmt_ital : s:fmt_none)
 "   Character"
 "   Number"
 "   Boolean"
@@ -152,7 +157,7 @@ exe "hi! Statement"       .s:fg_keyword   .s:bg_none        .s:fmt_none
 "   Repeat"
 "   Label"
 exe "hi! Operator"        .s:fg_operator  .s:bg_none        .s:fmt_none
-"   Keyword"
+exe "hi! Keyword"         .s:fg_operator  .s:bg_none        .(s:italic.keyword ? s:fmt_ital : s:fmt_none)
 "   Exception"
 
 exe "hi! PreProc"         .s:fg_special   .s:bg_none        .s:fmt_none
@@ -161,7 +166,7 @@ exe "hi! PreProc"         .s:fg_special   .s:bg_none        .s:fmt_none
 "   Macro"
 "   PreCondit"
 
-exe "hi! Type"            .s:fg_tag       .s:bg_none        .s:fmt_none
+exe "hi! Type"            .s:fg_tag       .s:bg_none        .(s:italic.type ? s:fmt_ital : s:fmt_none)
 "   StorageClass"
 exe "hi! Structure"       .s:fg_special   .s:bg_none        .s:fmt_none
 "   Typedef"
