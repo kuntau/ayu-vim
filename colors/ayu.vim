@@ -27,6 +27,7 @@ let s:palette.function  = {'dark': "#FFB454",  'light': "#F29718",  'mirage': "#
 let s:palette.special   = {'dark': "#E6B673",  'light': "#E6B673",  'mirage': "#FFC44C"}
 let s:palette.keyword   = {'dark': "#FF7733",  'light': "#FF7733",  'mirage': "#FFAE57"}
 
+let s:palette.warning   = {'dark': "#371F1C",  'light': "#371F1C",  'mirage': "#371F1C"}
 let s:palette.error     = {'dark': "#FF3333",  'light': "#FF3333",  'mirage': "#FF3333"}
 let s:palette.accent    = {'dark': "#F29718",  'light': "#FF6A00",  'mirage': "#FFCC66"}
 let s:palette.panel     = {'dark': "#14191F",  'light': "#FFFFFF",  'mirage': "#272D38"}
@@ -83,53 +84,51 @@ exe "let s:fmt_revb = ' gui=NONE".s:r.s:b.  " cterm=NONE".s:r.s:b.  " term=NONE"
 
 " Vim Highlighting: (see :help highlight-groups)"{{{
 " ----------------------------------------------------------------------------
-exe "hi! Normal"        .s:fg_fg          .s:bg_bg          .s:fmt_none
-exe "hi! ColorColumn"   .s:fg_none        .s:bg_line        .s:fmt_none
+exe "hi! Normal"          .s:fg_fg          .s:bg_bg          .s:fmt_none
+exe "hi! ColorColumn"     .s:fg_none        .s:bg_line        .s:fmt_none
 " Conceal, Cursor, CursorIM
-exe "hi! CursorColumn"  .s:fg_none        .s:bg_line        .s:fmt_none
-exe "hi! CursorLine"    .s:fg_none        .s:bg_line        .s:fmt_none
-exe "hi! CursorLineNr"  .s:fg_accent      .s:bg_line        .s:fmt_none
-exe "hi! LineNr"        .s:fg_guide       .s:bg_none        .s:fmt_none
+exe "hi! CursorColumn"    .s:fg_none        .s:bg_line        .s:fmt_none
+exe "hi! CursorLine"      .s:fg_none        .s:bg_line        .s:fmt_none
+exe "hi! CursorLineNr"    .s:fg_accent      .s:bg_line        .s:fmt_none
+exe "hi! LineNr"          .s:fg_guide       .s:bg_none        .s:fmt_none
 
-exe "hi! Directory"     .s:fg_fg_idle     .s:bg_none        .s:fmt_none
-exe "hi! DiffAdd"       .s:fg_string      .s:bg_panel       .s:fmt_none
-exe "hi! DiffChange"    .s:fg_tag         .s:bg_panel       .s:fmt_none
-exe "hi! DiffText"      .s:fg_fg          .s:bg_panel       .s:fmt_none
-exe "hi! ErrorMsg"      .s:fg_fg          .s:bg_error       .s:fmt_stnd
-exe "hi! VertSplit"     .s:fg_bg          .s:bg_none        .s:fmt_none
-exe "hi! Folded"        .s:fg_fg_idle     .s:bg_panel       .s:fmt_none
-exe "hi! FoldColumn"    .s:fg_none        .s:bg_panel       .s:fmt_none
-exe "hi! SignColumn"    .s:fg_none        .s:bg_panel       .s:fmt_none
+exe "hi! Directory"       .s:fg_fg_idle     .s:bg_none        .s:fmt_none
+exe "hi! DiffAdd"         .s:fg_string      .s:bg_panel       .s:fmt_none
+exe "hi! DiffChange"      .s:fg_tag         .s:bg_panel       .s:fmt_none
+exe "hi! DiffText"        .s:fg_fg          .s:bg_panel       .s:fmt_none
+exe "hi! ErrorMsg"        .s:fg_fg          .s:bg_error       .s:fmt_stnd
+exe "hi! VertSplit"       .s:fg_bg          .s:bg_none        .s:fmt_none
+exe "hi! Folded"          .s:fg_fg_idle     .s:bg_panel       .s:fmt_none
+exe "hi! FoldColumn"      .s:fg_none        .s:bg_panel       .s:fmt_none
+exe "hi! SignColumn"      .s:fg_none        .s:bg_panel       .s:fmt_none
 "   Incsearch"
 
-exe "hi! MatchParen"    .s:fg_fg          .s:bg_bg          .s:fmt_undr
-exe "hi! ModeMsg"       .s:fg_string      .s:bg_none        .s:fmt_none
-exe "hi! MoreMsg"       .s:fg_string      .s:bg_none        .s:fmt_none
-exe "hi! NonText"       .s:fg_guide       .s:bg_none        .s:fmt_none
-exe "hi! Pmenu"         .s:fg_fg          .s:bg_selection   .s:fmt_none
-exe "hi! PmenuSel"      .s:fg_fg          .s:bg_selection   .s:fmt_revr
+exe "hi! MatchParen"      .s:fg_fg          .s:bg_bg          .s:fmt_undr
+exe "hi! ModeMsg"         .s:fg_string      .s:bg_none        .s:fmt_none
+exe "hi! MoreMsg"         .s:fg_string      .s:bg_none        .s:fmt_none
+exe "hi! NonText"         .s:fg_guide       .s:bg_none        .s:fmt_none
+exe "hi! Pmenu"           .s:fg_fg          .s:bg_selection   .s:fmt_none
+exe "hi! PmenuSel"        .s:fg_fg          .s:bg_selection   .s:fmt_revr
 "   PmenuSbar"
 "   PmenuThumb"
-exe "hi! Question"      .s:fg_string      .s:bg_none        .s:fmt_none
-exe "hi! Search"        .s:fg_bg          .s:bg_constant    .s:fmt_none
-exe "hi! SpecialKey"    .s:fg_selection   .s:bg_none        .s:fmt_none
-exe "hi! SpellCap"      .s:fg_tag         .s:bg_none        .s:fmt_undr
-exe "hi! SpellLocal"    .s:fg_keyword     .s:bg_none        .s:fmt_undr
-exe "hi! SpellBad"      .s:fg_error       .s:bg_none        .s:fmt_undr
-exe "hi! SpellRare"     .s:fg_regexp      .s:bg_none        .s:fmt_undr
-exe "hi! StatusLine"    .s:fg_fg          .s:bg_panel       .s:fmt_none
-exe "hi! StatusLineNC"  .s:fg_fg_idle     .s:bg_panel       .s:fmt_none
-exe "hi! WildMenu"      .s:fg_bg          .s:bg_markup      .s:fmt_none
-exe "hi! TabLine"       .s:fg_fg          .s:bg_panel       .s:fmt_revr
+exe "hi! Question"        .s:fg_string      .s:bg_none        .s:fmt_none
+exe "hi! Search"          .s:fg_bg          .s:bg_constant    .s:fmt_none
+exe "hi! SpecialKey"      .s:fg_selection   .s:bg_none        .s:fmt_none
+exe "hi! SpellCap"        .s:fg_tag         .s:bg_none        .s:fmt_undr
+exe "hi! SpellLocal"      .s:fg_keyword     .s:bg_none        .s:fmt_undr
+exe "hi! SpellBad"        .s:fg_error       .s:bg_none        .s:fmt_undr
+exe "hi! SpellRare"       .s:fg_regexp      .s:bg_none        .s:fmt_undr
+exe "hi! StatusLine"      .s:fg_fg          .s:bg_panel       .s:fmt_none
+exe "hi! StatusLineNC"    .s:fg_fg_idle     .s:bg_panel       .s:fmt_none
+exe "hi! WildMenu"        .s:fg_bg          .s:bg_markup      .s:fmt_none
+exe "hi! TabLine"         .s:fg_fg          .s:bg_panel       .s:fmt_revr
 "   TabLineFill"
 "   TabLineSel"
-exe "hi! Title"         .s:fg_keyword     .s:bg_none        .s:fmt_none
-exe "hi! Visual"        .s:fg_none        .s:bg_selection   .s:fmt_none
+exe "hi! Title"           .s:fg_keyword     .s:bg_none        .s:fmt_none
+exe "hi! Visual"          .s:fg_none        .s:bg_selection   .s:fmt_none
 "   VisualNos"
-exe "hi! WarningMsg"    .s:fg_error       .s:bg_none        .s:fmt_none
-
-" TODO LongLineWarning to use variables instead of hardcoding
-hi LongLineWarning  guifg=NONE        guibg=#371F1C     gui=underline ctermfg=NONE        ctermbg=NONE        cterm=underline
+exe "hi! WarningMsg"      .s:fg_error       .s:bg_none        .s:fmt_none
+exe "hi! LongLineWarning" .s:fg_warning     .s:bg_none        .s:fmt_none
 "   WildMenu"
 
 "}}}
